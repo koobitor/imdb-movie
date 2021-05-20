@@ -2,14 +2,15 @@
  * @example HTTP1.1 via undici
  * @description Before using script. Please add API_KEY on .env before run this script.
  */
-require('dotenv').config()
- 
+require("dotenv").config()
+
 // Dependency Section
 import { request } from "undici"
 
 /**
  * @function bufferToJSON
  * @description Convert stream Buffer data to JSON
+ * @param response body form http request
  * @returns JSON Object
  */
 const bufferToJSON = async (body) => {
@@ -24,6 +25,7 @@ const bufferToJSON = async (body) => {
 /**
  * @function response
  * @description Response fallback on success and other status code
+ * @param response form http request
  * @returns JSON Object
  */
 const response = async (resp) => {
@@ -70,7 +72,7 @@ const getMovie = async (i) => {
   const resp = await request(url)
 
   // Response Function
-  response(resp)
+  return response(resp)
 }
 
 export default getMovie
