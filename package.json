@@ -5,6 +5,7 @@
   "author": "Sakol Assawasagool",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^9.0.2",
     "undici": "^3.3.6"
   },
   "scripts": {

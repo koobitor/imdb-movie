@@ -1,8 +1,9 @@
 /**
  * @example HTTP1.1 via undici
- * @description Before using script. Please insert apiKey before run this script.
+ * @description Before using script. Please add API_KEY on .env before run this script.
  */
-
+require('dotenv').config()
+ 
 // Dependency Section
 import { request } from "undici"
 
@@ -61,7 +62,8 @@ const response = async (resp) => {
  */
 const getMovie = async (i) => {
   // URL request construction
-  const apikey = "" // Generate API Key form http://www.omdbapi.com/apikey.aspx
+  const { API_KEY } = process.env
+  const apikey = API_KEY // Generate API Key form http://www.omdbapi.com/apikey.aspx
   const url = `http://www.omdbapi.com/?i=${i}&apikey=${apikey}`
 
   // Make a get request
@@ -71,7 +73,4 @@ const getMovie = async (i) => {
   response(resp)
 }
 
-/**
- * Execute Function
- */
-getMovie("tt0120591")
+export default getMovie
