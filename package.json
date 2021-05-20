@@ -1,0 +1,24 @@
+{
+  "name": "git-profile",
+  "version": "1.0.0",
+  "main": "server.js",
+  "author": "Sakol Assawasagool",
+  "license": "MIT",
+  "dependencies": {
+    "undici": "^3.3.6"
+  },
+  "scripts": {
+    "start": "nodemon --exec babel-node server.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/node": "^7.14.2",
+    "@babel/preset-env": "^7.14.2",
+    "eslint": "^7.26.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.23.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "nodemon": "^2.0.7"
+  }
+}
