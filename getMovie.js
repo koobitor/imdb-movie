@@ -29,7 +29,7 @@ const isValidJSONString = (str) => {
  * @returns JSON Object
  */
 const bufferToJSON = async (body) => {
-  let jsonString = "1"
+  let jsonString = ""
   for await (const chunk of body) {
     jsonString += String(chunk)
   }
