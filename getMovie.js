@@ -8,18 +8,43 @@ require("dotenv").config()
 import { request } from "undici"
 
 /**
+ * @function isValidJSONString
+ * @description Validate JSON String format
+ * @param json string
+ * @returns boolean
+ */
+const isValidJSONString = (str) => {
+  try {
+    JSON.parse(str)
+  } catch (e) {
+    return false
+  }
+  return true
+}
+
+/**
  * @function bufferToJSON
  * @description Convert stream Buffer data to JSON
  * @param response body form http request
  * @returns JSON Object
  */
 const bufferToJSON = async (body) => {
-  let jsonString = ""
+  let jsonString = "1"
   for await (const chunk of body) {
     jsonString += String(chunk)
   }
-  const json = JSON.parse(jsonString)
-  return json
+  if (isValidJSONString(jsonString)) {
+    const json = JSON.parse(jsonString)
+    return json
+  } else {
+    return {
+      error: {
+        statusCode: 500,
+        message: "Is not valid JSON String format.",
+        data: jsonString
+      }
+    }
+  }
 }
 
 /**
